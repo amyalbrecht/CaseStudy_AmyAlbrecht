@@ -67,6 +67,14 @@ public class TestController {
 		return mav;
 	}
 	
+	@RequestMapping("/album1")
+	public ModelAndView showAllPhotosHandler() {
+		ModelAndView mav = new ModelAndView("album1");
+		List<Photo> photoList = photoServices.getAllPhotos();
+		mav.addObject("photoList", photoList);
+		return mav;
+	}
+	
 	
 //	//http://localhost:8080/photos/savePhoto?
 //	photoFileName=blippi.PNG&
@@ -142,6 +150,7 @@ public class TestController {
 		
 		
 	}
+	
 	
 	
 

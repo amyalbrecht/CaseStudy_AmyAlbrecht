@@ -105,7 +105,6 @@
             
             <label>Tags: </label>
 			<textarea id="pTags" name="pTags" rows="4" cols="50"></textarea>
-             <%-- <label>Create New Tag? Enter Tag Name Here: </label><form:input type="text" path="newTag" name="newTag" /><br><br> --%>
             <input type="submit" value="Submit" name="submit">
         </form:form>
         
