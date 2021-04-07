@@ -1,0 +1,20 @@
+.bg-orange {
+    background-color: #ed7d3e!important;
+  
+  }
+
+.bg-blue {
+    background-color:#6486c4;
+    text-align: center;
+}
+
+.indexFlexBox {
+    display: flex;
+}
+
+.indexGoTo {
+    margin: 10%;
+    padding: 5%;
+    
+    background-color: #ed7d3e;
+}
