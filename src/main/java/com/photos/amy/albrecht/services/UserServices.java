@@ -30,11 +30,11 @@ private UserRepository userRepository;
 	}
 	
 	
-	public void addUserByEmailAndPassword(String email, String password) {
-		if (email != null && password != null) {
-			userRepository.saveByEmailAndPassword(email, password);
-		}
-	}
+//	public void addUserByEmailAndPassword(String email, String password) {
+//		if (email != null && password != null) {
+//			userRepository.saveByEmailAndPassword(email, password);
+//		}
+//	}
 	
 	//read
 	
