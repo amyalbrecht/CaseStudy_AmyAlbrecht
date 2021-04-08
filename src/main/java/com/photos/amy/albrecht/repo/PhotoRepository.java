@@ -8,8 +8,6 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.photos.amy.albrecht.models.Comment;
-import com.photos.amy.albrecht.models.Likes;
 import com.photos.amy.albrecht.models.Photo;
 import com.photos.amy.albrecht.models.Tag;
 

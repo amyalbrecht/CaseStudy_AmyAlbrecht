@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.photos.amy.albrecht.models.Album;
-import com.photos.amy.albrecht.models.Comment;
-import com.photos.amy.albrecht.models.Likes;
 import com.photos.amy.albrecht.models.Photo;
 import com.photos.amy.albrecht.models.Tag;
 import com.photos.amy.albrecht.models.User;
@@ -47,7 +45,7 @@ public class TestController {
 	//add User
 	@RequestMapping("/")
 	public String testHandler() {
-		User user = new User("email@email.com", "passwerd", "Callie", "Albrecht", false, new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+		User user = new User("email@email.com", "passwerd", "Callie", "Albrecht", false, new ArrayList<>());
 		userServices.addUser(user);
 		return "index";
 	}

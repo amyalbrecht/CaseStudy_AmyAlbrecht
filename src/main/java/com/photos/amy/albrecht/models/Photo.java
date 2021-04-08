@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -29,13 +28,7 @@ public class Photo {
 	@Column(name = "caption", nullable = true, length = 250)
 	private String caption;
 
-	@OneToMany(targetEntity = Comment.class, cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-	private List<Comment> pComments; //all the comments for a photo
-
-	@OneToMany(targetEntity = Likes.class, cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-	private List<Likes> pLikes; //all the likes for a photo
-
-	@ManyToMany(targetEntity = Tag.class, fetch = FetchType.LAZY)
+	@ManyToMany(targetEntity = Tag.class, fetch = FetchType.EAGER)
 	private List<Tag> pTags; //all the tags for a photo
 	//private String pTags; //all the tags for a photo
 	
@@ -50,13 +43,10 @@ public class Photo {
 
 	
 	//removed photoId from fields constructor because it's auto-generated
-	public Photo(String photoFileName, String caption, List<Comment> pComments, List<Likes> pLikes, List<Tag> pTags,
-			Album pAlbum) {
+	public Photo(String photoFileName, String caption, List<Tag> pTags, Album pAlbum) {
 		super();
 		this.photoFileName = photoFileName;
 		this.caption = caption;
-		this.pComments = pComments;
-		this.pLikes = pLikes;
 		this.pTags = pTags;
 		this.pAlbum = pAlbum;
 	}
@@ -87,21 +77,7 @@ public class Photo {
 		this.caption = caption;
 	}
 
-	public List<Comment> getpComments() {
-		return pComments;
-	}
 
-	public void setpComments(List<Comment> pComments) {
-		this.pComments = pComments;
-	}
-
-	public List<Likes> getpLikes() {
-		return pLikes;
-	}
-
-	public void setpLikes(List<Likes> pLikes) {
-		this.pLikes = pLikes;
-	}
 
 	public List<Tag> getpTags() {
 		return pTags;
@@ -127,8 +103,6 @@ public class Photo {
 		int result = 1;
 		result = prime * result + ((caption == null) ? 0 : caption.hashCode());
 		result = prime * result + ((pAlbum == null) ? 0 : pAlbum.hashCode());
-		result = prime * result + ((pComments == null) ? 0 : pComments.hashCode());
-		result = prime * result + ((pLikes == null) ? 0 : pLikes.hashCode());
 		result = prime * result + ((pTags == null) ? 0 : pTags.hashCode());
 		result = prime * result + ((photoFileName == null) ? 0 : photoFileName.hashCode());
 		result = prime * result + photoId;
@@ -156,16 +130,6 @@ public class Photo {
 				return false;
 		} else if (!pAlbum.equals(other.pAlbum))
 			return false;
-		if (pComments == null) {
-			if (other.pComments != null)
-				return false;
-		} else if (!pComments.equals(other.pComments))
-			return false;
-		if (pLikes == null) {
-			if (other.pLikes != null)
-				return false;
-		} else if (!pLikes.equals(other.pLikes))
-			return false;
 		if (pTags == null) {
 			if (other.pTags != null)
 				return false;
@@ -186,7 +150,7 @@ public class Photo {
 	@Override
 	public String toString() {
 		return "Photo [photoId=" + photoId + ", photoFileName=" + photoFileName + ", caption=" + caption
-				+ ", pComments=" + pComments + ", pLikes=" + pLikes + ", pTags=" + pTags + ", pAlbum=" + pAlbum + "]";
+				 + ", pTags=" + pTags + ", pAlbum=" + pAlbum + "]";
 	}
 
 

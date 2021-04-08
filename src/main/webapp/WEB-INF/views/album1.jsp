@@ -130,7 +130,7 @@
 					<th>Photo File Name</th>
 					<th>Caption</th>
 				</tr>
-				<c:forEach var="photo" items="${photoList}">
+				<c:forEach items="${photoList}" var="photo">
 					<tr>
 						<td>${photo.photoId}</td>
 						<td>${photo.photoFileName}</td>

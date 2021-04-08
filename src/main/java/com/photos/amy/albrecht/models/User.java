@@ -39,11 +39,6 @@ public class User {
 	@OneToMany(targetEntity = Photo.class, cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private List<Photo> uPhotos; //all the photos uploaded by a user
 	
-	@OneToMany(targetEntity = Comment.class, cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-	private List<Comment> uComment; //all the comments made by a user
-	
-	@OneToMany(targetEntity = Likes.class, cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-	private List<Likes> uLikes; //all the likes made by a user
 		
 	//constructors
 	
@@ -54,7 +49,7 @@ public class User {
 
 	//removed userId from fields constructor because it's auto-generated
 	public User(String email, String password, String firstName, String lastName, boolean authLevel,
-			List<Photo> uPhotos, List<Comment> uComment, List<Likes> uLikes) {
+			List<Photo> uPhotos) {
 		super();
 		this.email = email;
 		this.password = password;
@@ -62,8 +57,7 @@ public class User {
 		this.lastName = lastName;
 		this.authLevel = authLevel;
 		this.uPhotos = uPhotos;
-		this.uComment = uComment;
-		this.uLikes = uLikes;
+		
 	}
 
 	//getters and setters
@@ -138,24 +132,7 @@ public class User {
 	}
 
 
-	public List<Comment> getuComment() {
-		return uComment;
-	}
-
-
-	public void setuComment(List<Comment> uComment) {
-		this.uComment = uComment;
-	}
-
-
-	public List<Likes> getuLikes() {
-		return uLikes;
-	}
-
-
-	public void setuLike(List<Likes> uLikes) {
-		this.uLikes = uLikes;
-	}
+	
 
 	//hashCode()
 
@@ -168,8 +145,6 @@ public class User {
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((uComment == null) ? 0 : uComment.hashCode());
-		result = prime * result + ((uLikes == null) ? 0 : uLikes.hashCode());
 		result = prime * result + ((uPhotos == null) ? 0 : uPhotos.hashCode());
 		result = prime * result + userId;
 		return result;
@@ -208,16 +183,6 @@ public class User {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (uComment == null) {
-			if (other.uComment != null)
-				return false;
-		} else if (!uComment.equals(other.uComment))
-			return false;
-		if (uLikes == null) {
-			if (other.uLikes != null)
-				return false;
-		} else if (!uLikes.equals(other.uLikes))
-			return false;
 		if (uPhotos == null) {
 			if (other.uPhotos != null)
 				return false;
@@ -234,8 +199,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", email=" + email + ", password=" + password + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", authLevel=" + authLevel + ", uPhotos=" + uPhotos + ", uComment="
-				+ uComment + ", uLikes=" + uLikes + "]";
+				+ ", lastName=" + lastName + ", authLevel=" + authLevel + ", uPhotos=" + uPhotos  + "]";
 	}
 
 	
