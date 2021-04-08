@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -89,6 +90,23 @@
             <div class="container">
 
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    <%-- forEach test --%>
+					<c:forEach items="${albumList}" var="album" >
+					<div class="col">
+                        <div class="card shadow-sm">
+                            <img src="../resources/images/excavator.jpg">
+                            <div class="card-body bg-orange">  
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <p class="card-text"><a href="${album.albumName}">Caption: ${album.albumName}</a></p>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </c:forEach>
+                    
                     <!--Album #1-->
                     <div class="col">
                         <div class="card shadow-sm">

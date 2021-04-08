@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
 <head>
@@ -26,9 +27,9 @@
 			<ul class="navbar-nav me-auto mb-2">
 				<li class="nav-item"><a class="nav-link active"
 					aria-current="page" href="index">Home</a></li>
-				<li class="nav-item"><a class="nav-link" href="about">About</a></li>
+				<li class="nav-item"><a class="nav-link" href="<c:url value = "/about"/>">About</a></li>
 				<li class="nav-item"><a class="nav-link" href="allAlbums">Albums</a></li>
-				<li class="nav-item"><a class="nav-link" href="addPhoto">Add Photo</a></li>
+				<li class="nav-item"><a class="nav-link" href="/addPhoto">Add Photo</a></li>
 			</ul>
 		</div>
 	</div>
