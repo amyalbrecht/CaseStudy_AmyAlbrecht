@@ -123,10 +123,11 @@ public class TestController {
 
 		mav.setViewName("album1");
 		List<Photo> photoList = albumServices.getAlbumByAlbumId(albumId).getaPhotos();
-		List<Album> albumList = albumServices.getAllAlbums();
+		Album album = albumServices.getAlbumByAlbumId(albumId);
+		
 		mav.addObject("pTagsList", pTagsList);
 		mav.addObject("photoList", photoList);
-		mav.addObject("albumList", albumList);
+		mav.addObject("album", album);
 		
 
 		return mav;

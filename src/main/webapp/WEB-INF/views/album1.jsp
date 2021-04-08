@@ -10,7 +10,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Album 1</title>
+<title>Photo Album</title>
 
 <!-- BOOTSTRAP 5.0.0-beta3 EXTERNAL LINKS -->
 
