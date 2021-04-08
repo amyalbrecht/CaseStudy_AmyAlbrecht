@@ -86,7 +86,7 @@
         <p><h2>Login</h2></p>
         
         
-        <form method="POST">
+        <form action="loginAttempt" method="POST">
             <input type="email" name="email" placeholder="Email Address"><br><br>
             <input type="password" name="password" placeholder="Password"><br><br>
             <input type="submit"  name="login" value="Login">

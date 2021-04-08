@@ -87,7 +87,7 @@
 
 		<%@include file="header.jsp"%>
 
-		<p><h2>Album example</h2></p>
+		<p><h2>Album Name: ${album.albumName}</h2></p>
 		
 		
 

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -46,9 +47,17 @@ public class TestController {
 	//add User
 	@RequestMapping("/")
 	public String testHandler() {
-		User user = new User("email@email.com", "passwerd", "Callie", "Albrecht", false, new ArrayList<>());
-		userServices.addUser(user);
+//		User user = new User("email@email.com", "passwerd", "Callie", "Albrecht", false, new ArrayList<>());
+//		userServices.addUser(user);
 		return "landingPage";
+	}
+	
+	@RequestMapping("/loginAttempt")
+	public String loginAttemptHandler(HttpServletRequest request) {
+		if (userServices.getUserByEmailAndPassword(request.getParameter("email"), request.getParameter("password")) != null) {
+			return "index";
+		} 
+		return "redirect:/";
 	}
 	
 	
@@ -71,7 +80,7 @@ public class TestController {
 		ModelAndView mav = new ModelAndView("allAlbums"); 
 		List<Album> albumList = albumServices.getAllAlbums();
 		mav.addObject("albumList", albumList);
-		mav.addObject("photo", new Photo());
+		//mav.addObject("photo", new Photo());
 		return mav;
 	}
 	
@@ -105,22 +114,24 @@ public class TestController {
 		return mav;
 	}
 	
-//	@RequestMapping("/album1")
-//	public ModelAndView showAllPhotosHandler(HttpServletRequest request) {
-//		
-//		Map<String, Object> model = new HashMap<String, Object>();
-//		model.put("photo", photoList);
-//		
-//		ModelAndView mav = new ModelAndView("album1");
-//		
-//		
-//		System.out.println("=========================");
-//		System.out.println(model);
-//		System.out.println(photoList);
-//		System.out.println("**************************");
-//		return mav;
-//	}
-//	
+	@RequestMapping("/album1/{albumId}")
+	public ModelAndView showAllAlbumsHandler(@PathVariable int albumId) {
+		ModelAndView mav = new ModelAndView();
+		
+		List<Tag> pTagsList = tagServices.getAllTags();
+	
+
+		mav.setViewName("album1");
+		List<Photo> photoList = albumServices.getAlbumByAlbumId(albumId).getaPhotos();
+		List<Album> albumList = albumServices.getAllAlbums();
+		mav.addObject("pTagsList", pTagsList);
+		mav.addObject("photoList", photoList);
+		mav.addObject("albumList", albumList);
+		
+
+		return mav;
+	}
+	
 	
 //	//http://localhost:8080/photos/savePhoto?
 //	photoFileName=blippi.PNG&
@@ -191,7 +202,6 @@ public class TestController {
 		
 		List<Tag> pTagsList = tagServices.getAllTags();
 		
-	
 		mav.setViewName("album1");
 		photoServices.addPhoto(photokey);
 		albumServices.addPhotoToAlbum(Integer.parseInt(request.getParameter("pAlbum")), photokey);

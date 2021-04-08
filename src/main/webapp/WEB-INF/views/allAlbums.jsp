@@ -98,7 +98,10 @@
                             <div class="card-body bg-orange">  
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
-                                        <p class="card-text"><a href="${album.albumName}">Caption: ${album.albumName}</a></p>
+                                        <p class="card-text">Album Name: ${album.albumName}</p>
+                                   	<form action="album1" method="POST">
+                                   		<input name="id" value="Go to Album" type="button" onClick="window.location='album1/${album.albumId}'">
+                                   	</form>
                                     </div>
                                     
                                 </div>
@@ -107,6 +110,7 @@
                     </div>
                     </c:forEach>
                     
+                    <%--
                     <!--Album #1-->
                     <div class="col">
                         <div class="card shadow-sm">
@@ -237,7 +241,7 @@
             </div>
         </div>
 
-
+--%>
 
 
 
