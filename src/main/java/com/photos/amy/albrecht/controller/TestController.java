@@ -66,6 +66,39 @@ public class TestController {
 		return mav;
 	}
 	
+	@RequestMapping("/allAlbums")
+	public ModelAndView allAlbumsHandler() {
+		ModelAndView mav = new ModelAndView("allAlbums"); 
+		List<Album> albumList = albumServices.getAllAlbums();
+		mav.addObject("albumList", albumList);
+		mav.addObject("photo", new Photo());
+		return mav;
+	}
+	
+	@RequestMapping("/about")
+	public ModelAndView aboutHandler() {
+		ModelAndView mav = new ModelAndView("about"); 
+		return mav;
+	}
+	
+	@RequestMapping("/login")
+	public ModelAndView loginHandler() {
+		ModelAndView mav = new ModelAndView("login"); 
+		return mav;
+	}
+	
+	@RequestMapping("/register")
+	public ModelAndView registerHandler() {
+		ModelAndView mav = new ModelAndView("register"); 
+		return mav;
+	}
+	
+	@RequestMapping("/index")
+	public ModelAndView indexHandler() {
+		ModelAndView mav = new ModelAndView("index"); 
+		return mav;
+	}
+	
 //	@RequestMapping("/album1")
 //	public ModelAndView showAllPhotosHandler(HttpServletRequest request) {
 //		
