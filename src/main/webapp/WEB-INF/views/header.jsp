@@ -4,7 +4,7 @@
 <nav class="navbar navbar-dark bg-orange"
 	aria-label="First navbar example">
 	<div class="container-fluid bg-orange">
-		<a class="navbar-brand" href="#">Max's Photos</a>
+		<a class="navbar-brand" href="index">Max's Photos</a>
 		<div>
 			<a href="#">Not (User)?</a> | <a href="login">Login</a> | <a href="register">Register</a>
 		</div>
@@ -21,6 +21,7 @@
 				<li class="nav-item"><a class="nav-link" href="about">About</a></li>
 				<li class="nav-item"><a class="nav-link" href="allAlbums">Albums</a></li>
 				<li class="nav-item"><a class="nav-link" href="addPhoto">Add Photo</a></li>
+				<li class="nav-item"><a class="nav-link" href="landingPage">Landing Page</a></li>
 			</ul>
 		</div>
 	</div>

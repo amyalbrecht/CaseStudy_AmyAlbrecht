@@ -41,6 +41,7 @@ private PhotoRepository photoRepository;
 	//read
 	public List<Photo> getAllPhotos() {
 		return photoRepository.findAll();
+		
 	}
 	
 	public Photo getPhotoByPhotoId(Integer photoId) {
@@ -51,6 +52,11 @@ private PhotoRepository photoRepository;
 		return photoRepository.getPhotoByPhotoFileName(photoFileName);
 	}
 	
+	
+	
+	public List<Photo> findBypAlbum(int albumId) {
+		return photoRepository.findBypAlbum(albumId);
+	}
 	
 	
 	

@@ -48,7 +48,7 @@ public class TestController {
 	public String testHandler() {
 		User user = new User("email@email.com", "passwerd", "Callie", "Albrecht", false, new ArrayList<>());
 		userServices.addUser(user);
-		return "index";
+		return "landingPage";
 	}
 	
 	
@@ -96,6 +96,12 @@ public class TestController {
 	@RequestMapping("/index")
 	public ModelAndView indexHandler() {
 		ModelAndView mav = new ModelAndView("index"); 
+		return mav;
+	}
+	
+	@RequestMapping("/landingPage")
+	public ModelAndView landingPageHandler() {
+		ModelAndView mav = new ModelAndView("landingPage"); 
 		return mav;
 	}
 	
@@ -182,16 +188,20 @@ public class TestController {
 		
 		photokey.setpTags(pTagsChecked);
 		
-		List<Photo> photoList = photoServices.getAllPhotos();
-		mav.addObject("photoList", photoList);
+		
 		List<Tag> pTagsList = tagServices.getAllTags();
-		mav.addObject("pTagsList", pTagsList);
-		System.out.println("=========================");
-		System.out.println(photoList);
-		System.out.println("=========================");
+		
+	
 		mav.setViewName("album1");
 		photoServices.addPhoto(photokey);
 		albumServices.addPhotoToAlbum(Integer.parseInt(request.getParameter("pAlbum")), photokey);
+		List<Photo> photoList = albumServices.getAlbumByAlbumId(Integer.parseInt(request.getParameter("pAlbum"))).getaPhotos();
+		mav.addObject("pTagsList", pTagsList);
+		mav.addObject("photoList", photoList);
+		
+		System.out.println("=========================");
+		System.out.println(photoList);
+		System.out.println("=========================");
 		
 		return mav;
 		

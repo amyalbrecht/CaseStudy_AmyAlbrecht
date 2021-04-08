@@ -60,10 +60,11 @@ public class AlbumServices {
 	}
 
 	// read - look at all photos in an album
-//		public List<Photo> getAllPhotos() {
-//			return albumRepository.findAll()
-//		}
-	//
+		public List<Photo> findByaPhotos(Integer albumId) {
+			
+			return albumRepository.findByaPhotos(albumId);
+		}
+	
 
 	// update
 	public void saveAlbum(Album album) {

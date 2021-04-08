@@ -23,6 +23,8 @@ public interface PhotoRepository extends JpaRepository<Photo, Integer> {
 	
 	List<Photo> findAll();
 	
+	List<Photo> findBypAlbum(int albumId);
+	
 	Optional<Photo> getByPhotoId(Integer photoId);
 	
 	//List<Photo> getByPhotoFileNameAndCaption(String photoFileName, String caption);
