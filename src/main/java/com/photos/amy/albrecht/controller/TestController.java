@@ -151,6 +151,8 @@ public class TestController {
 		
 		List<Photo> photoList = photoServices.getAllPhotos();
 		mav.addObject("photoList", photoList);
+		List<Tag> pTagsList = tagServices.getAllTags();
+		mav.addObject("pTagsList", pTagsList);
 		System.out.println("=========================");
 		System.out.println(photoList);
 		System.out.println("=========================");

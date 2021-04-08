@@ -141,13 +141,13 @@
 							src="/photos/WEB-INF/resources/images/excavator.jpg">
               				
 							<div class="card-body bg-orange">
-								<p class="card-text">${photo.photoId}</p>
+								<p class="card-text">Caption: ${photo.caption}</p>
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
 										<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
 										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
 									</div>
-									<small class="text-muted">4 comments<br>9 likes
+									<small class="text-muted">Tags: ${photo.pTags}
 									</small>
 								</div>
 							</div>

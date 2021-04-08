@@ -25,10 +25,10 @@
 		<div class="collapse navbar-collapse" id="navbarsExample01">
 			<ul class="navbar-nav me-auto mb-2">
 				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="#">Home</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">About</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Albums</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Add Photo</a></li>
+					aria-current="page" href="index">Home</a></li>
+				<li class="nav-item"><a class="nav-link" href="about">About</a></li>
+				<li class="nav-item"><a class="nav-link" href="allAlbums">Albums</a></li>
+				<li class="nav-item"><a class="nav-link" href="addPhoto">Add Photo</a></li>
 			</ul>
 		</div>
 	</div>
