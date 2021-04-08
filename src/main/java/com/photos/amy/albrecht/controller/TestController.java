@@ -3,6 +3,7 @@ package com.photos.amy.albrecht.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -65,14 +66,22 @@ public class TestController {
 		return mav;
 	}
 	
-	@RequestMapping("/album1")
-	public ModelAndView showAllPhotosHandler() {
-		ModelAndView mav = new ModelAndView("album1");
-		List<Photo> photoList = photoServices.getAllPhotos();
-		mav.addObject("photoList", photoList);
-		return mav;
-	}
-	
+//	@RequestMapping("/album1")
+//	public ModelAndView showAllPhotosHandler(HttpServletRequest request) {
+//		
+//		Map<String, Object> model = new HashMap<String, Object>();
+//		model.put("photo", photoList);
+//		
+//		ModelAndView mav = new ModelAndView("album1");
+//		
+//		
+//		System.out.println("=========================");
+//		System.out.println(model);
+//		System.out.println(photoList);
+//		System.out.println("**************************");
+//		return mav;
+//	}
+//	
 	
 //	//http://localhost:8080/photos/savePhoto?
 //	photoFileName=blippi.PNG&
@@ -105,7 +114,7 @@ public class TestController {
 	
 	@RequestMapping(value="/savePhoto", method = RequestMethod.POST)
 	public ModelAndView savePhotoHandler(HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView("addPhoto");
+		ModelAndView mav = new ModelAndView();
 
 		System.out.println(request.getParameter("photoFileName"));
 		System.out.println(request.getParameter("caption"));
@@ -140,6 +149,11 @@ public class TestController {
 		
 		photokey.setpTags(pTagsChecked);
 		
+		List<Photo> photoList = photoServices.getAllPhotos();
+		mav.addObject("photoList", photoList);
+		System.out.println("=========================");
+		System.out.println(photoList);
+		System.out.println("=========================");
 		mav.setViewName("album1");
 		photoServices.addPhoto(photokey);
 		albumServices.addPhotoToAlbum(Integer.parseInt(request.getParameter("pAlbum")), photokey);

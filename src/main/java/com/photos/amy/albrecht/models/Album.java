@@ -105,12 +105,13 @@ public class Album implements Serializable {
 		return true;
 	}
 
+//	@Override
+//	public String toString() {
+//		return "Album [albumId=" + albumId + ", albumName=" + albumName + ", aPhotos=" + aPhotos + "]";
+//	}
+
 	//toString()
 	
-	@Override
-	public String toString() {
-		return "Album [albumId=" + albumId + ", albumName=" + albumName + ", aPhotos=" + aPhotos + "]";
-	}
 	
 	
 

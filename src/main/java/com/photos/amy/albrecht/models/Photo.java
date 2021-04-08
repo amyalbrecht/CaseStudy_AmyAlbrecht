@@ -146,12 +146,13 @@ public class Photo {
 	}
 
 
+//	@Override
+//	public String toString() {
+//		return "Photo [photoId=" + photoId + ", photoFileName=" + photoFileName + ", caption=" + caption + ", pTags="
+//				+ pTags + ", pAlbum=" + pAlbum + "]";
+//	}
 
-	@Override
-	public String toString() {
-		return "Photo [photoId=" + photoId + ", photoFileName=" + photoFileName + ", caption=" + caption
-				 + ", pTags=" + pTags + ", pAlbum=" + pAlbum + "]";
-	}
+
 
 
 
