@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
   <html>
 
@@ -82,23 +84,31 @@
     <div>
         <p><h2>Edit Photo</h2></p>
         <div>
-            <img src="../resources/images/excavator.jpg" width=40% height=40%>
+            <img src="/photos/resources/images/${photo.photoFileName}" width=40% height=40%>
         </div>
         <br><br>
         <form method="POST">
             
-            <label>Date: </label><input type="date" name="date"><br><br>
-            <label>Album: </label><select id="album" name="album">
-                <option value="album1">Album #1</option>
-                <option value="album2">Album #2</option>
-                <option value="album3">Album #3</option>
-                <option value="album4">Album #4</option>
-              </select><br><br>
-            <label>Create New Album?: </label><input type="text" name="newAlbum"><br><br>
-            <label>Caption: </label><input type="text" name="caption"><br><br>
-            <label>Tags: </label><input type="text" name="tag"><br><br>
+            <%-- 
+            <form:select path="pAlbum">
+						<form:options name="pAlbum" items="${albumList}" itemValue="albumId" itemLabel="albumName"/> 
+                
+            </form:select>
+            --%>
+            
+            <label>Caption: </label><input type="text" name="caption" value="${photo.caption}"><br><br>
+            <label>Tags: </label><input type="text" name="tag" 
+            						value="<c:forEach items='${photo.pTags}' var='pTag'> ${pTag.tagName}, </c:forEach>"><br><br>
             <input type="submit" value="Submit" name="submit">
         </form>
+        <br><br>
+        <form method="POST" action="deletePhoto/${photo.photoId}">
+        	<input type="submit" value="Delete" name="submit">
+        </form>
+        
+        
+        
+        
         
     </div>
 

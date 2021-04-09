@@ -158,7 +158,7 @@
 						<button id="goToAboutButton">About</button>
 						<script type="text/javascript">
 							document.getElementById("goToAboutButton").onclick = function () {
-								location.href = "#";
+								location.href = "about";
 							}
 						</script>
 					</div>
@@ -167,15 +167,15 @@
 						<button id="goToAlbumsButton">Albums</button>
 						<script type="text/javascript">
 							document.getElementById("goToAlbumsButton").onclick = function () {
-								location.href = "#";
+								location.href = "allAlbums";
 							}
 						</script>
 					</div>
 					<div class="indexGoTo">
 						<br> <br>
-						<button id="goToAddPhotosButton">Add Photos</button>
+						<button id="goToAddPhotoButton">Add Photo</button>
 						<script type="text/javascript">
-							document.getElementById("goToAddPhotosButton").onclick = function () {
+							document.getElementById("goToAddPhotoButton").onclick = function () {
 								location.href = "addPhoto";
 							}
 						</script>

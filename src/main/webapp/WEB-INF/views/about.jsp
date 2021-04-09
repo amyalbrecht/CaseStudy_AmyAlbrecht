@@ -93,7 +93,7 @@
 		<br>
 		<br>
 		<div>
-			<img src="../resources/images/excavator.jpg" width=40% height=40%>
+			<img src="/photos/resources/images/excavator.jpg" width=40% height=40%>
 		</div>
 		<div class="indexGoTo">
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed

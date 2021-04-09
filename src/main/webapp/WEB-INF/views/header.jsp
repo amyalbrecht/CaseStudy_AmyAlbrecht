@@ -6,7 +6,7 @@
 	<div class="container-fluid bg-orange">
 		<a class="navbar-brand" href="/photos/index">Max's Photos</a>
 		<div>
-			<a href="#">Not (User)?</a> | <a href="/photos/login">Login</a> | <a href="/photos/register">Register</a>
+			<a href="/photos/login">Not (User)?</a> | <a href="/photos/login">Login</a> | <a href="/photos/register">Register</a>
 		</div>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarsExample01" aria-controls="navbarsExample01"

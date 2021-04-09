@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <!DOCTYPE html>
@@ -87,44 +87,60 @@
 
 		<%@include file="header.jsp"%>
 
-		<p><h2>Album Name: ${album.albumName}</h2></p>
-		
-		
+		<p>
+		<h2>Album Name: ${album.albumName}</h2>
+		</p>
+
+
 
 		<div class="album py-5 bg-blue">
 			<div class="container">
 
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-					
-					<c:forEach items="${photoList}" var="photo" >
-					<div class="col">
-						<div class="card shadow-sm">
-						
-              				<img
-							src="/photos/resources/images/${photo.photoFileName}">
-              				
-							<div class="card-body bg-orange">
-								<p class="card-text">Caption: ${photo.caption}</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-									</div>
-									<small class="text-muted">
-										Tags: <c:forEach items="${photo.pTags}" var="pTag" >
+
+					<c:forEach items="${photoList}" var="photo">
+						<div class="col">
+							<div class="card shadow-sm">
+
+								<img src="/photos/resources/images/${photo.photoFileName}">
+
+								<div class="card-body bg-orange">
+									<p class="card-text">Caption: ${photo.caption}</p>
+									<div class="d-flex justify-content-between align-items-center">
+										<div class="btn-group">
+											<%-- <button type="button" class="btn btn-sm btn-outline-secondary" id="goToEditPhotoButton">Edit</button>--%>
+
+											<form action="editPhoto" method="POST">
+												<input name="id" value="Edit" type="button"
+													class="btn btn-sm btn-outline-secondary"
+													onClick="window.location='/photos/editPhoto/${photo.photoId}'">
+											</form>
+
+
+											<%-- 
+										<script type="text/javascript">
+											document.getElementById("goToEditPhotoButton").onclick = function () {
+											location.href = "editPhoto";
+											}
+											</script>--%>
+
+										</div>
+										<small class="text-muted"> Tags: <c:forEach
+												items="${photo.pTags}" var="pTag">
 										
 										${pTag.tagName},
 										
 										</c:forEach>
-									</small>
+										</small>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
 					</c:forEach>
-					
-					
-					
-					
+
+
+
+
 					<div class="col">
 						<div class="card shadow-sm">
 							<svg class="bd-placeholder-img card-img-top" width="100%"
@@ -137,22 +153,21 @@
               </svg>
 
 							<div class="card-body bg-orange">
-								<p class="card-text">Caption: This is a wider card with supporting
-									text below as a natural lead-in to additional content. This
-									content is a little bit longer.</p>
+								<p class="card-text">Caption: This is a wider card with
+									supporting text below as a natural lead-in to additional
+									content. This content is a little bit longer.</p>
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
 										<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
 										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
 									</div>
-									<small class="text-muted">Tags: tag1, tag2, tag 3
-									</small>
+									<small class="text-muted">Tags: tag1, tag2, tag 3 </small>
 								</div>
 							</div>
 						</div>
 					</div>
-		
-					
+
+
 				</div>
 			</div>
 		</div>
