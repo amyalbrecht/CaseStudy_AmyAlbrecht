@@ -4,6 +4,27 @@
 **April 12, 2021**
 
 ***
+## Overall Concept
+Max's Photo Album is a place where relatives can go to upload pictures of my son, Max, if they’re uncomfortable using social media.
+
+***
+## Full-Stack Components
+
+Technology used:
+
+- Database (MariaDB)
+- Core Java & JPA
+- HTML5/CSS3
+- Spring MVC
+- Junit
+- JSP
+- Maven 4.0.0
+- Eclipse IDE version 2020-12 (4.18.0)
+- HeidiSQL 11.2.0.6250
+- Tomcat v9.0
+
+
+***
 
 ## User Stories
 **Login/Logout User Stories**
