@@ -87,14 +87,15 @@
             <img src="/photos/resources/images/${photo.photoFileName}" width=40% height=40%>
         </div>
         <br><br>
-        <form method="POST">
-            
-            <%-- 
+        <form action="saveEditedPhoto" method="POST">
+            <input value="${photo.photoId}" type="hidden" name="photoId"/>
+             
+            <label>Album: </label>
             <form:select path="pAlbum">
-						<form:options name="pAlbum" items="${albumList}" itemValue="albumId" itemLabel="albumName"/> 
+						<form:options name="pAlbum" items="${pAlbum}" itemValue="albumId" itemLabel="albumName"/> 
                 
             </form:select>
-            --%>
+           
             
             <label>Caption: </label><input type="text" name="caption" value="${photo.caption}"><br><br>
             <label>Tags: </label><input type="text" name="tag" 

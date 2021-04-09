@@ -230,9 +230,9 @@ public class TestController {
 		
 		
 		mav.addObject("photo", photo);
-		mav.addObject("albumList", albumList);
+		mav.addObject("pAlbum", albumList);
 		System.out.println("=========================");
-		System.out.println("photoId " + photoId);
+		System.out.println(albumList);
 		System.out.println("=========================");
 		return mav;
 	}
@@ -240,6 +240,51 @@ public class TestController {
 	@RequestMapping(value = "/saveEditedPhoto", method = RequestMethod.POST)
 	public ModelAndView saveEditedPhotoHandler(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
+		Photo photo = new Photo();
+		photo.setCaption(request.getParameter("caption"));
+		photo.setpAlbum(albumServices.getAlbumByAlbumId(Integer.parseInt(request.getParameter("pAlbum"))));
+		
+		
+		String pTagsCombined = request.getParameter("pTags");
+		String[] pTagsSeparated = pTagsCombined.split(", ");
+		HashMap<String, Tag> pTagsNoDuplications = new HashMap<>();
+		for (String s : pTagsSeparated) {
+			pTagsNoDuplications.put(s, new Tag(s));
+		}
+		ArrayList<Tag> pTagsUnchecked = new ArrayList<>(pTagsNoDuplications.values());
+		ArrayList<Tag> pTagsChecked = new ArrayList<>();
+		for (Tag t : pTagsUnchecked) {
+			Tag test = tagServices.findTagByTagName(t.getTagName());
+			if (test == null) {
+				System.out.println("Tag:" + t.getTagId() + " TagName: " + t.getTagName());
+				tagServices.saveTag(t);
+				pTagsChecked.add(tagServices.findTagByTagName(t.getTagName()));
+			} else {
+				System.out.println("Test:" + test.getTagId() + " TestName: " + test.getTagName());
+				pTagsChecked.add(test);
+			}
+
+		}
+
+		photo.setpTags(pTagsChecked);
+		
+		
+		photoServices.savePhoto(photo);
+		
+		Album album = photo.getpAlbum();
+		int id = album.getAlbumId();
+		
+		mav.setViewName("redirect:about");
+		
+		System.out.println("=========================");
+		System.out.println(request.getParameter("caption"));
+		System.out.println(request.getParameter("photoId"));
+		System.out.println(request.getParameter("pAlbum"));
+		System.out.println(request.getParameter("pTags"));
+		System.out.println(photo);
+		System.out.println(album);
+		System.out.println(id);
+		System.out.println("=========================");
 
 		return mav;
 
