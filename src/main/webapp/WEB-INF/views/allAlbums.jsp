@@ -94,7 +94,7 @@
 					<c:forEach items="${albumList}" var="album" >
 					<div class="col">
                         <div class="card shadow-sm">
-                            <img src="../resources/images/excavator.jpg">
+                            <%-- <img src="../resources/images/excavator.jpg">--%>
                             <div class="card-body bg-orange">  
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>

@@ -140,7 +140,7 @@
 
 
 
-
+					<%-- 
 					<div class="col">
 						<div class="card shadow-sm">
 							<svg class="bd-placeholder-img card-img-top" width="100%"
@@ -166,6 +166,7 @@
 							</div>
 						</div>
 					</div>
+					--%>
 
 
 				</div>
