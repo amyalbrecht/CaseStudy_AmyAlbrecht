@@ -104,7 +104,7 @@
             <input type="submit" value="Submit" name="submit">
         </form>
         <br><br>
-        <form method="POST" action="deletePhoto/${photo.photoId}">
+        <form method="POST" action="<%=request.getContextPath()%>/deletePhoto/${photo.photoId}">
         	<input type="submit" value="Delete" name="submit">
         </form>
         

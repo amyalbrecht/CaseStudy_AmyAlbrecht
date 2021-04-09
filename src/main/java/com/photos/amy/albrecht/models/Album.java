@@ -90,11 +90,6 @@ public class Album implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Album other = (Album) obj;
-		if (aPhotos == null) {
-			if (other.aPhotos != null)
-				return false;
-		} else if (!aPhotos.equals(other.aPhotos))
-			return false;
 		if (albumId != other.albumId)
 			return false;
 		if (albumName == null) {

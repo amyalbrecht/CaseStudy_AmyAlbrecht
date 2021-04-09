@@ -130,11 +130,6 @@ public class Photo {
 				return false;
 		} else if (!pAlbum.equals(other.pAlbum))
 			return false;
-		if (pTags == null) {
-			if (other.pTags != null)
-				return false;
-		} else if (!pTags.equals(other.pTags))
-			return false;
 		if (photoFileName == null) {
 			if (other.photoFileName != null)
 				return false;

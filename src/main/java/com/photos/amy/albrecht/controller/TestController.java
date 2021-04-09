@@ -290,18 +290,18 @@ public class TestController {
 
 	}
 	
-	@RequestMapping("editPhoto/deletePhoto/{photoId}")
-	public String deletePhotoHandler(@PathVariable int photoId) {
+	@RequestMapping("deletePhoto/{photoId}")
+	public ModelAndView deletePhotoHandler(@PathVariable int photoId) {
 		
 		Photo photo = photoServices.getPhotoByPhotoId(photoId);
 		Album album = photo.getpAlbum();
-		int id = album.getAlbumId();
+		//int id = album.getAlbumId();
 	
 		albumServices.removePhotoFromAlbum(album, photoId);
 		
 		photoServices.deletePhotoByPhotoId(photoId);
 	
-		return "redirect:album1/" + id;
+		return allAlbumsHandler();
 		
 	}
 	

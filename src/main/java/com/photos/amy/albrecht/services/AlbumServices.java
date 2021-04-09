@@ -97,7 +97,7 @@ public class AlbumServices {
 		System.out.println(newAlbum.getAlbumId());
 		System.out.println(deletePhoto.getPhotoId());
 		System.out.println("======================");
-		newAlbum.getaPhotos().remove(deletePhoto);
+		System.out.println(newAlbum.getaPhotos().remove(deletePhoto));
 		System.out.println(newAlbum.getAlbumId());
 		
 		albumRepository.save(newAlbum);
