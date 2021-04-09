@@ -239,13 +239,21 @@ public class TestController {
 
 	@RequestMapping(value = "/saveEditedPhoto", method = RequestMethod.POST)
 	public ModelAndView saveEditedPhotoHandler(HttpServletRequest request) {
+		System.out.println("=========================");
+		System.out.println(request.getParameter("caption"));
+		System.out.println(request.getParameter("photoId"));
+		System.out.println(request.getParameter("pAlbum"));
+		System.out.println(request.getParameter("pTag"));
+	
+		System.out.println("=========================");
+		
 		ModelAndView mav = new ModelAndView();
-		Photo photo = new Photo();
+		
+		Photo photo = photoServices.getPhotoByPhotoId(Integer.parseInt(request.getParameter("photoId")));
 		photo.setCaption(request.getParameter("caption"));
 		photo.setpAlbum(albumServices.getAlbumByAlbumId(Integer.parseInt(request.getParameter("pAlbum"))));
 		
-		
-		String pTagsCombined = request.getParameter("pTags");
+		String pTagsCombined = request.getParameter("pTag");
 		String[] pTagsSeparated = pTagsCombined.split(", ");
 		HashMap<String, Tag> pTagsNoDuplications = new HashMap<>();
 		for (String s : pTagsSeparated) {
@@ -267,8 +275,7 @@ public class TestController {
 		}
 
 		photo.setpTags(pTagsChecked);
-		
-		
+				
 		photoServices.savePhoto(photo);
 		
 		Album album = photo.getpAlbum();
@@ -276,17 +283,17 @@ public class TestController {
 		
 		mav.setViewName("redirect:about");
 		
-		System.out.println("=========================");
-		System.out.println(request.getParameter("caption"));
-		System.out.println(request.getParameter("photoId"));
-		System.out.println(request.getParameter("pAlbum"));
-		System.out.println(request.getParameter("pTags"));
-		System.out.println(photo);
-		System.out.println(album);
-		System.out.println(id);
-		System.out.println("=========================");
+//		System.out.println("=========================");
+//		System.out.println(request.getParameter("caption"));
+//		System.out.println(request.getParameter("photoId"));
+//		System.out.println(request.getParameter("pAlbum"));
+//		System.out.println(request.getParameter("pTags"));
+//		System.out.println(photo);
+//		System.out.println(album);
+//		System.out.println(id);
+//		System.out.println("=========================");
 
-		return mav;
+		return showAllAlbumsHandler(id);
 
 	}
 	
@@ -295,13 +302,13 @@ public class TestController {
 		
 		Photo photo = photoServices.getPhotoByPhotoId(photoId);
 		Album album = photo.getpAlbum();
-		//int id = album.getAlbumId();
+		int id = album.getAlbumId();
 	
 		albumServices.removePhotoFromAlbum(album, photoId);
 		
 		photoServices.deletePhotoByPhotoId(photoId);
 	
-		return allAlbumsHandler();
+		return showAllAlbumsHandler(id);
 		
 	}
 	

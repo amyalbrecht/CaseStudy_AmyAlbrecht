@@ -87,20 +87,20 @@
             <img src="/photos/resources/images/${photo.photoFileName}" width=40% height=40%>
         </div>
         <br><br>
-        <form action="saveEditedPhoto" method="POST">
-            <input value="${photo.photoFileName}" type="hidden" name="photoId"/>
+        <form action="<%=request.getContextPath()%>/saveEditedPhoto" method="POST">
+            <input value="${photo.photoFileName}" type="hidden" name="photoFileName"/>
             <input value="${photo.photoId}" type="hidden" name="photoId"/>
              
             <label>Album: </label>
-            <form:select path="pAlbum">
+            <form:select name="pAlbum" path="pAlbum">
 						<form:options name="pAlbum" items="${pAlbum}" itemValue="albumId" itemLabel="albumName"/> 
                 
             </form:select>
            
             
             <label>Caption: </label><input type="text" name="caption" value="${photo.caption}"><br><br>
-            <label>Tags: </label><input type="text" name="tag" 
-            						value="<c:forEach items='${photo.pTags}' var='pTag'> ${pTag.tagName}, </c:forEach>"><br><br>
+            <label>Tags: </label><input type="text" name="pTag" 
+            						value="<c:forEach items='${photo.pTags}' var='pTag'>${pTag.tagName}, </c:forEach>"><br><br>
             <input type="submit" value="Submit" name="submit">
         </form>
         <br><br>
