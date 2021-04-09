@@ -16,7 +16,9 @@ import com.photos.amy.albrecht.repo.PhotoRepository;
 
 @Service
 public class PhotoServices {
-private PhotoRepository photoRepository;
+	
+	@Autowired
+	private PhotoRepository photoRepository;
 	
 	@Autowired
 	public PhotoServices(PhotoRepository photoRepository) {

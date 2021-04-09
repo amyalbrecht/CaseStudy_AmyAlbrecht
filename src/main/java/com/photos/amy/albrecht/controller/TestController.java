@@ -297,6 +297,8 @@ public class TestController {
 		Album album = photo.getpAlbum();
 		int id = album.getAlbumId();
 	
+		albumServices.removePhotoFromAlbum(album, photoId);
+		
 		photoServices.deletePhotoByPhotoId(photoId);
 	
 		return "redirect:album1/" + id;

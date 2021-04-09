@@ -21,6 +21,8 @@ public interface PhotoRepository extends JpaRepository<Photo, Integer> {
 	
 	void save(String photoFileName);
 	
+	Photo save(Integer photoId);
+	
 	List<Photo> findAll();
 	
 	List<Photo> findBypAlbum(int albumId);

@@ -17,6 +17,8 @@ import com.photos.amy.albrecht.repo.PhotoRepository;
 
 @Service
 public class AlbumServices {
+	
+	@Autowired
 	private AlbumRepository albumRepository;
 
 	@Autowired
@@ -86,6 +88,20 @@ public class AlbumServices {
 
 		return isAdded;
 
+	}
+
+	public void removePhotoFromAlbum(Album album, int photoId) {
+		Album newAlbum = albumRepository.getAlbumByAlbumId(album.getAlbumId());
+		Photo deletePhoto = photoServices.getPhotoByPhotoId(photoId);
+		System.out.println("======================");
+		System.out.println(newAlbum.getAlbumId());
+		System.out.println(deletePhoto.getPhotoId());
+		System.out.println("======================");
+		newAlbum.getaPhotos().remove(deletePhoto);
+		System.out.println(newAlbum.getAlbumId());
+		
+		albumRepository.save(newAlbum);
+		
 	}
 
 	

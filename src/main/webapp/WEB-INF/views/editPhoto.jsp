@@ -88,6 +88,7 @@
         </div>
         <br><br>
         <form action="saveEditedPhoto" method="POST">
+            <input value="${photo.photoFileName}" type="hidden" name="photoId"/>
             <input value="${photo.photoId}" type="hidden" name="photoId"/>
              
             <label>Album: </label>
