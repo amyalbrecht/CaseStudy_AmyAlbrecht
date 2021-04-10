@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.photos.amy.albrecht.junit.TestUserServices
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.083 s <<< FAILURE! - in com.photos.amy.albrecht.junit.TestUserServices
+com.photos.amy.albrecht.junit.TestUserServices  Time elapsed: 0.082 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.core.env.Environment.getRequiredProperty(String)" because "this.environment" is null
+	at com.photos.amy.albrecht.junit.TestUserServices.setUp(TestUserServices.java:40)
+
