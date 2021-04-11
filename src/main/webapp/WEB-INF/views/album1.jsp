@@ -102,7 +102,7 @@
 						<div class="col">
 							<div class="card shadow-sm">
 
-								<img src="/photos/resources/images/${photo.photoFileName}">
+								<img src="/resources/images/${photo.photoFileName}">
 
 								<div class="card-body bg-orange">
 									<p class="card-text">Caption: ${photo.caption}</p>
@@ -113,7 +113,7 @@
 											<form action="editPhoto" method="POST">
 												<input name="id" value="Edit" type="button"
 													class="btn btn-sm btn-outline-secondary"
-													onClick="window.location='/photos/editPhoto/${photo.photoId}'">
+													onClick="window.location.href='editPhoto/${photo.photoId}'">
 											</form>
 
 

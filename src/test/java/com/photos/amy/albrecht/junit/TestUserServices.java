@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.AfterAll;
@@ -31,22 +32,16 @@ public class TestUserServices {
 	@Autowired
 	UserRepository userRepository;
 
-	
-	
-	
-	
 
-//	//create
-//		public boolean addUser(User user) {
-//			if(user == null) return false;
-//			userRepository.save(user);
-//			return true;
-//		}
+
 		
-//		@Test
-//		public void testAddUser() {
-//			
-//		}
+		@Test
+		@Transactional
+		public void testAddUser() {
+			User user = new User("email@email.com", "password", "Callie", "Albrecht", false, new ArrayList<>());
+			boolean expected = true;
+			assertEquals(expected, userServices.addUser(user));
+		}
 	
 
 //		
@@ -55,15 +50,13 @@ public class TestUserServices {
 //		}
 		
 //		@Test 
+//		@Transactional
 //		public void testGetAllUsers() {
+//			List<User> userList = 
 //			
 //		}
 		
-//		
-//		public User getUserByEmail(String email) {
-//			if(email == null) return null;
-//			return userRepository.getUserByEmail(email);
-//		}
+
 		
 		@Test
 		@Transactional
@@ -78,10 +71,16 @@ public class TestUserServices {
 //			return userRepository.getUserByEmailAndPassword(email, password);
 //		}
 //		
-//		//update
-//		public void saveUser(User user) {
-//			userRepository.save(user);
-//		}
+		//update
+		public void saveUser(User user) {
+			userRepository.save(user);
+		}
+		
+		@Test
+		@Transactional
+		public void testSaveUser() {
+			
+		}
 //		
 //		
 //		//delete
@@ -90,14 +89,14 @@ public class TestUserServices {
 //		}
 //		
 //
-//		public boolean deleteUser(String email) {
-//			if(email == null) return false;
-//			User user = userRepository.getUserByEmail(email);
-//			if (user != null) {
-//				userRepository.delete(user);
-//				return true;
-//			}
-//			return false;
+
+		
+//		@Test
+//		@Transactional
+//		public void testDeleteUserByEmail() {
+//			User user = new User("email@email.com", "password", "Callie", "Albrecht", false, new ArrayList<>());
+//			boolean expected = true;
+//			assertEquals(expected, userServices.deleteUserByEmail(user.getEmail()));
 //		}
 //		
 //		

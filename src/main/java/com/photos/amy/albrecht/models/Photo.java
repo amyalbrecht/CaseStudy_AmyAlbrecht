@@ -22,7 +22,7 @@ public class Photo {
 	@Column(name = "photoId", nullable = false, length = 11)
 	private int photoId;
 
-	@Column(name = "photoFileName", nullable = false, length = 50)
+	@Column(name = "photoFileName", nullable = false, length = 100)
 	private String photoFileName;
 
 	@Column(name = "caption", nullable = true, length = 250)

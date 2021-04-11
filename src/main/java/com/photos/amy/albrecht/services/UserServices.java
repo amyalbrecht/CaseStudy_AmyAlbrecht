@@ -64,15 +64,7 @@ private UserRepository userRepository;
 	}
 	
 
-	public boolean deleteUser(String email) {
-		if(email == null) return false;
-		User user = userRepository.getUserByEmail(email);
-		if (user != null) {
-			userRepository.delete(user);
-			return true;
-		}
-		return false;
-	}
+
 	
 	
 	

@@ -100,7 +100,7 @@
                                     <div>
                                         <p class="card-text">Album Name: ${album.albumName}</p>
                                    	<form action="album1" method="POST">
-                                   		<input name="id" value="Go to Album" type="button" onClick="window.location='<%=request.getContextPath()%>/album1/${album.albumId}'">
+                                   		<input name="id" value="Go to Album" type="button" onClick="window.location.href='album1/${album.albumId}'">
                                    	</form>
                                     </div>
                                     
