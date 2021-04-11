@@ -110,10 +110,9 @@
 										<div class="btn-group">
 											<%-- <button type="button" class="btn btn-sm btn-outline-secondary" id="goToEditPhotoButton">Edit</button>--%>
 
-											<form action="editPhoto" method="POST">
-												<input name="id" value="Edit" type="button"
-													class="btn btn-sm btn-outline-secondary"
-													onClick="window.location.href='editPhoto/${photo.photoId}'">
+											<form action="<%=request.getContextPath()%>/editPhoto/${photo.photoId}" method="POST">
+												<input name="id" value="Edit" type="submit"
+													class="btn btn-sm btn-outline-secondary">
 											</form>
 
 

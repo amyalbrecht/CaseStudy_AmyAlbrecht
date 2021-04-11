@@ -84,7 +84,7 @@
     <div>
         <p><h2>Edit Photo</h2></p>
         <div>
-            <img src="/photos/resources/images/${photo.photoFileName}" width=40% height=40%>
+            <img src="/resources/images/${photo.photoFileName}" width=40% height=40%>
         </div>
         <br><br>
         <form action="<%=request.getContextPath()%>/saveEditedPhoto" method="POST">

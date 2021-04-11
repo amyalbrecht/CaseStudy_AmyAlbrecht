@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -159,6 +161,7 @@ public class TestController {
 //		
 //	}
 
+	@Transactional
 	@RequestMapping(value = "/savePhoto", method = RequestMethod.POST)
 	public ModelAndView savePhotoHandler(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
@@ -201,8 +204,7 @@ public class TestController {
 		mav.setViewName("album1");
 		photoServices.addPhoto(photokey);
 		albumServices.addPhotoToAlbum(Integer.parseInt(request.getParameter("pAlbum")), photokey);
-		List<Photo> photoList = albumServices.getAlbumByAlbumId(Integer.parseInt(request.getParameter("pAlbum")))
-				.getaPhotos();
+		List<Photo> photoList = albumServices.getAlbumByAlbumId(Integer.parseInt(request.getParameter("pAlbum"))).getaPhotos();
 		Album album = albumServices.getAlbumByAlbumId(Integer.parseInt(request.getParameter("pAlbum")));
 		mav.addObject("pTagsList", pTagsList);
 		mav.addObject("photoList", photoList);
@@ -237,6 +239,7 @@ public class TestController {
 		return mav;
 	}
 
+	@Transactional
 	@RequestMapping(value = "/saveEditedPhoto", method = RequestMethod.POST)
 	public ModelAndView saveEditedPhotoHandler(HttpServletRequest request) {
 		System.out.println("=========================");
@@ -251,6 +254,8 @@ public class TestController {
 		
 		Photo photo = photoServices.getPhotoByPhotoId(Integer.parseInt(request.getParameter("photoId")));
 		photo.setCaption(request.getParameter("caption"));
+		albumServices.removePhotoFromAlbum(photo.getpAlbum(), photo.getPhotoId());
+		
 		photo.setpAlbum(albumServices.getAlbumByAlbumId(Integer.parseInt(request.getParameter("pAlbum"))));
 		
 		String pTagsCombined = request.getParameter("pTag");
@@ -278,8 +283,12 @@ public class TestController {
 				
 		photoServices.savePhoto(photo);
 		
+		
 		Album album = photo.getpAlbum();
+
 		int id = album.getAlbumId();
+		
+		albumServices.addPhotoToAlbum(id, photo);
 		
 		mav.setViewName("redirect:about");
 		
