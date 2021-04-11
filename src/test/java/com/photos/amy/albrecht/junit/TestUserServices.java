@@ -14,52 +14,27 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
-
-
-import com.photos.amy.albrecht.config.DataConfig;
 import com.photos.amy.albrecht.models.User;
 import com.photos.amy.albrecht.repo.UserRepository;
 import com.photos.amy.albrecht.services.UserServices;
 
+@SpringBootTest
 public class TestUserServices {
 	
-	private static UserServices userServices;
-	private static UserRepository userRepository;
-	private static Connection conn = null;
-	private PreparedStatement stmt = null;
-	private ResultSet rs = null;
-	private User actual = null;
+	@Autowired
+	UserServices userServices;
 	
-	@BeforeAll
-	public static void setUp() throws SQLException {
-		System.out.println("Before All Method");
-		DataConfig dc = new DataConfig();
-		
-		userServices = new UserServices(userRepository);
-		conn = (Connection) dc.getEntityManagerFactoryBean();
-		
-	}
+	@Autowired
+	UserRepository userRepository;
+
 	
-	@BeforeEach
-	public void beforeEach() throws SQLException{
-		System.out.println("Before Each");
 	
-		stmt = conn.prepareStatement("SELECT * FROM user WHERE id = ?");
-		stmt.setInt(1, 1);
-		rs = stmt.executeQuery();
-		if(rs.next()) {
-			actual = new User();
-			actual.setUserId(rs.getInt(1));
-			actual.setAuthLevel(rs.getBoolean(2));
-			actual.setEmail(rs.getString(3));
-			actual.setFirstName(rs.getString(4));
-			actual.setLastName(rs.getString(5));
-			actual.setPassword(rs.getString(6));
-			
-		}
-		
-	}
+	
+	
 
 //	//create
 //		public boolean addUser(User user) {
@@ -91,10 +66,10 @@ public class TestUserServices {
 //		}
 		
 		@Test
+		@Transactional
 		public void testGetUserByEmail() {
 			String expected ="admin@admin.com";
-		
-			assertEquals(expected, actual.getEmail());
+			assertEquals(expected, userServices.getUserByEmail(expected).getEmail());
 		}
 		
 //		
