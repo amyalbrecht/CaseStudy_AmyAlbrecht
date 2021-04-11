@@ -99,8 +99,8 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
                                         <p class="card-text">Album Name: ${album.albumName}</p>
-                                   	<form action="album1" method="POST">
-                                   		<input name="id" value="Go to Album" type="button" onClick="window.location.href='album1/${album.albumId}'">
+                                   	<form action="<%=request.getContextPath()%>/album1/${album.albumId}" method="POST">
+                                   		<input type="submit" value="Go to Album" name="submit">
                                    	</form>
                                     </div>
                                     

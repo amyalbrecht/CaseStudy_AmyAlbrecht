@@ -93,7 +93,7 @@
             <button id="goHomeButton">Home</button>
           <script type="text/javascript">
             document.getElementById("goHomeButton").onclick = function () {
-              location.href = "#";
+              location.href = "index";
             }
           </script>
 

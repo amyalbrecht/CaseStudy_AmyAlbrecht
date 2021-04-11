@@ -6,8 +6,16 @@
   <head>
     <meta charset="ISO-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <%-- This login page was to be used when a user wants to switch accounts. Includes header.jsp. 
+    To be added later after User CRUD capabilities are added. --%>
+    
+   
+   
     <title>Login</title>
 
+    
+    
     <!-- BOOTSTRAP 5.0.0-beta3 EXTERNAL LINKS -->
 
 
