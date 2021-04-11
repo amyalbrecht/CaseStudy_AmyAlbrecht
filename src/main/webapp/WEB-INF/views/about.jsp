@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,22 +86,25 @@
 
 		<div>
 
-			<p><h1>About Max</h1></p>
+			<p>
+			<h1>About Max</h1>
+			</p>
 
 
 		</div>
-		<br>
-		<br>
+		<br> <br>
 		<div>
-			<img src="/photos/resources/images/excavator.jpg" width=40% height=40%>
+			<img src="/resources/images/excavator.jpg" width=40% height=40%>
 		</div>
 		<div class="indexGoTo">
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-				do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-				ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-				reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-				pariatur.</p>
+			<p>Max Joseph Albrecht just turned 3 years old on April 4! He has
+				always been a sweet, smart, silly guy. He loves to meet people - he
+				acts like the mayor of wherever he goes! Dogs everywhere see Max
+				from a distance and come running over to see him, with their tails
+				wagging. Max loves playing his toy ukelele, doing puzzles, learning
+				lower-case letters, playing with his cat, making silly noises, and
+				of course, watching Blippi on YouTube. As of this writing, his favorite colors
+				are gray, red, and yellow.</p>
 
 
 		</div>

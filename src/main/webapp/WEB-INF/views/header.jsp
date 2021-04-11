@@ -4,7 +4,7 @@
 <nav class="navbar navbar-dark bg-orange"
 	aria-label="First navbar example">
 	<div class="container-fluid bg-orange">
-		<a class="navbar-brand" href="index">Max's Photos</a>
+		<a class="navbar-brand" href="/index">Max's Photo Album</a>
 		<%-- Login and Register links to be added later after user CRUD capabilities are added --%>
 		<%-- 
 		<div>

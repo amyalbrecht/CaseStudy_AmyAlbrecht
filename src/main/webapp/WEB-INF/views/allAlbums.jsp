@@ -85,6 +85,11 @@
 
 
         <p><h2>All Albums</h2></p>
+        <br>
+		<br>
+		<div>
+			<img src="/resources/images/book.jpg" width=40% height=40%>
+		</div>
         
         <div class="album py-5 bg-blue">
             <div class="container">

@@ -16,7 +16,7 @@ public class Tag {
 	@Column(name = "tagId", nullable = false, length = 11)
 	int tagId;
 	
-	@Column(name = "tagName", nullable = false, length = 10)
+	@Column(name = "tagName", nullable = false, length = 20)
 	String tagName;
 	
 	//constructors

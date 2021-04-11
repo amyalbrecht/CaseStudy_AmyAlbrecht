@@ -86,32 +86,29 @@
 				<!--Bootstrap Carousel: placeholder, to be added later-->
 
 				<p>
-				<h1>Max's Photos</h1>
+				<h1>Max's Photo Album</h1>
 				</p>
 				<br>
 				<br>
-
+				<img src="/resources/images/P1.jpg" width=20% height=20%>
+				<img src="/resources/images/P12.jpg" width=20% height=20%>
+				<img src="/resources/images/P17.jpg" width=20% height=20%>
+				<br>
+				<br>
 				<h3>Welcome!</h3>
 				<br>
 				<br>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-					eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-					ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-					aliquip ex ea commodo consequat. Duis aute irure dolor in
-					reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-					pariatur.</p>
+				<p>This is a private photo-sharing website where you can share all the cute pictures you've taken of Max! Feel free to add a photo or just browse all the albums!</p>
 
-				<div class="indexFlexBox">
+				
 					<div class="indexGoTo">
-						<br> <br>
 						<button id="goToAboutButton">About</button>
 						<script type="text/javascript">
 							document.getElementById("goToAboutButton").onclick = function () {
 								location.href = "about";
 							}
 						</script>
-					</div>
-					<div class="indexGoTo">
+					
 						<br> <br>
 						<button id="goToAlbumsButton">Albums</button>
 						<script type="text/javascript">
@@ -119,8 +116,7 @@
 								location.href = "allAlbums";
 							}
 						</script>
-					</div>
-					<div class="indexGoTo">
+					
 						<br> <br>
 						<button id="goToAddPhotoButton">Add Photo</button>
 						<script type="text/javascript">
@@ -130,7 +126,7 @@
 						</script>
 					</div>
 
-				</div>
+				
 
 
 

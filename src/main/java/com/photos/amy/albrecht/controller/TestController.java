@@ -132,44 +132,13 @@ public class TestController {
 		return mav;
 	}
 
-//	//http://localhost:8080/photos/savePhoto?
-//	photoFileName=blippi.PNG&
-//	album=new&
-//	newAlbum=New+Album&
-//	caption=hello&
-//	tag=new%2C+red&
-//	submit=Submit
-
-	// saving Photo to database
-//	@RequestMapping("/savePhoto")
-//	public String savePhotoHandler(@ModelAttribute Photo photo) {
-//		System.out.println(photo);
-//		photoServices.addPhoto(photo);
-//		return "album1";
-//	}
-
-//	@RequestMapping(value="/savePhoto", method = RequestMethod.GET)
-//	public ModelAndView savePhotoHandler(@ModelAttribute("photo") @Valid Photo photo,
-//			BindingResult errors) {
-//		if(errors.hasErrors()) {
-//			ModelAndView mav = new ModelAndView("error");
-//			return mav;
-//		}
-//		
-//		ModelAndView mav = new ModelAndView("addPhoto");
-//		return mav;
-//		
-//	}
 
 	@Transactional
 	@RequestMapping(value = "/savePhoto", method = RequestMethod.POST)
 	public ModelAndView savePhotoHandler(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 
-		System.out.println(request.getParameter("photoFileName"));
-		System.out.println(request.getParameter("caption"));
-		System.out.println(request.getParameter("pAlbum"));
-		System.out.println(request.getParameter("pTags"));
+		
 
 		Photo photokey = new Photo();
 		photokey.setPhotoFileName(request.getParameter("photoFileName"));
