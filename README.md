@@ -8,7 +8,7 @@
 Max's Photo Album is a place where relatives can go to upload pictures of my son, Max, if they’re uncomfortable using social media.
 
 ***
-## Full-Stack Components
+## Full Stack Components
 
 Technology used:
 
