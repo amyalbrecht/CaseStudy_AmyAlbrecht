@@ -13,9 +13,11 @@ Max's Photo Album is a place where relatives can go to upload pictures of my son
 Technology used:
 
 - Database (MariaDB)
-- Core Java & JPA
-- HTML5/CSS3
+- Core Java 
 - Spring MVC
+- Spring Data JPA
+- Spring Boot (the final project is Spring Boot)
+- HTML5/CSS3
 - Junit
 - JSP
 - Maven 4.0.0
@@ -59,9 +61,16 @@ Technology used:
 
 I’m brand new to GitHub, so I had lots of issues trying to figure it out. I’m getting the hang of it now, though.
 
+Figuring out JUnit proved very difficult. I used it once before in a Skills Based Assessment, and then I converted my Case Study to Spring Data JPA. Unfortunately, JUnit doesn’t work with the @Autowired annotation unless you’re using Spring Boot. By the time I realized that, it was Saturday, April 10. I did convert my project to Spring Boot, but it was too late to implement Junit because of the other issues I was debugging. Going forward, I plan to use TDD and Junit before I push projects because I realize how important they are.
+
+I wanted a better user validation for the login, but for now, I have a landing page that only has the login form without the header.jsp that can take you anywhere within the app. Should I decide to create a version 2.0 of this app, that would be the first thing I would work on.
 
 There were several things I wanted to include in this project, but I realized that due to time constraints, they had become stretch goals:
 
+- CRUD functionality for User model
+- CRUD functionality for Album model
+- Update and Delete functionality for Tag model
+- Authorization levels for Users
 - Comments and Likes for each Photo
 - Date Created field for Photo and Album
 - search for photos by Tag
@@ -70,7 +79,14 @@ There were several things I wanted to include in this project, but I realized th
 
 
 ***
+## Extras saved in GitHub
 
+- Database schema (DBschema.pdf)
+- SQL file to create database without data (createPhotosDB.sql)
+- SQL file to create database with data (createPhotosDBWithData.sql)
+- Wireframes (Wireframes.pdf)
+
+***
 
 
 
