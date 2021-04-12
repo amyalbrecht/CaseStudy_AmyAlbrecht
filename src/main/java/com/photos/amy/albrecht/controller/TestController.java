@@ -43,25 +43,14 @@ public class TestController {
 	@Autowired
 	private TagServices tagServices;
 
-	// add User
+	// localhost:8080/ takes you to landing page
 	@RequestMapping("/")
 	public String testHandler() {
-//		User user = new User("email@email.com", "passwerd", "Callie", "Albrecht", false, new ArrayList<>());
-//		userServices.addUser(user);
 		return "landingPage";
 	}
 
-//	@RequestMapping("/loginAttempt")
-//	public String loginAttemptHandler(HttpServletRequest request) {
-//		if (userServices.getUserByEmailAndPassword(request.getParameter("email"),
-//				request.getParameter("password")) != null) {
-//			return "index";
-//		}
-//		return "redirect:/";
-//	}
 
-	// linking to the addPhoto.jsp page
-
+	// linking to addPhoto.jsp
 	// get albumList for dropdown
 	@RequestMapping("/addPhoto")
 	public ModelAndView addPhotoHandler() {
@@ -75,7 +64,7 @@ public class TestController {
 	}
 	
 	
-
+	//linking to allAlbums.jsp
 	@RequestMapping("/allAlbums")
 	public ModelAndView allAlbumsHandler() {
 		ModelAndView mav = new ModelAndView("allAlbums");
@@ -85,36 +74,42 @@ public class TestController {
 		return mav;
 	}
 
+	//linking to about.jsp
 	@RequestMapping("/about")
 	public ModelAndView aboutHandler() {
 		ModelAndView mav = new ModelAndView("about");
 		return mav;
 	}
 
+	//linking to login.jsp (now landingPage.jsp)
 	@RequestMapping("/login")
 	public ModelAndView loginHandler() {
 		ModelAndView mav = new ModelAndView("login");
 		return mav;
 	}
 
+	//linking to register.jsp
 	@RequestMapping("/register")
 	public ModelAndView registerHandler() {
 		ModelAndView mav = new ModelAndView("register");
 		return mav;
 	}
 
+	//linking to index.jsp
 	@RequestMapping("/index")
 	public ModelAndView indexHandler() {
 		ModelAndView mav = new ModelAndView("index");
 		return mav;
 	}
 
+	//linking to landingPage.jsp
 	@RequestMapping("/landingPage")
 	public ModelAndView landingPageHandler() {
 		ModelAndView mav = new ModelAndView("landingPage");
 		return mav;
 	}
 
+	//linking to album page - showing one album at a time, given the albumID you have chosen
 	@RequestMapping("/album1/{albumId}")
 	public ModelAndView showAllAlbumsHandler(@PathVariable int albumId) {
 		ModelAndView mav = new ModelAndView();
@@ -132,7 +127,8 @@ public class TestController {
 		return mav;
 	}
 
-
+	//saving a photo on addPhoto.jsp. See handler comments for more info.
+				
 	@Transactional
 	@RequestMapping(value = "/savePhoto", method = RequestMethod.POST)
 	public ModelAndView savePhotoHandler(HttpServletRequest request) {
@@ -145,22 +141,27 @@ public class TestController {
 		photokey.setCaption(request.getParameter("caption"));
 		photokey.setpAlbum(albumServices.getAlbumByAlbumId(Integer.parseInt(request.getParameter("pAlbum"))));
 
+		//saving pTags via split(", ") and sending them to a HashMap and a for loop to prevent duplicates.
 		String pTagsCombined = request.getParameter("pTags");
 		String[] pTagsSeparated = pTagsCombined.split(", ");
 		HashMap<String, Tag> pTagsNoDuplications = new HashMap<>();
 		for (String s : pTagsSeparated) {
 			pTagsNoDuplications.put(s, new Tag(s));
 		}
+		
+		//checking to see if the tags exist in the HashMap. 
+		//If the tag does not exist, save the new tag in the Tag table and add to the photo's tag list (pTags).
+		//If the tag does exist, only save the tag to the photo's tag list (pTags).
 		ArrayList<Tag> pTagsUnchecked = new ArrayList<>(pTagsNoDuplications.values());
 		ArrayList<Tag> pTagsChecked = new ArrayList<>();
 		for (Tag t : pTagsUnchecked) {
 			Tag test = tagServices.findTagByTagName(t.getTagName());
 			if (test == null) {
-				System.out.println("Tag:" + t.getTagId() + " TagName: " + t.getTagName());
+				//System.out.println("Tag:" + t.getTagId() + " TagName: " + t.getTagName());
 				tagServices.saveTag(t);
 				pTagsChecked.add(tagServices.findTagByTagName(t.getTagName()));
 			} else {
-				System.out.println("Test:" + test.getTagId() + " TestName: " + test.getTagName());
+				//System.out.println("Test:" + test.getTagId() + " TestName: " + test.getTagName());
 				pTagsChecked.add(test);
 			}
 
@@ -179,45 +180,31 @@ public class TestController {
 		mav.addObject("photoList", photoList);
 		mav.addObject("album", album);
 
-		System.out.println("=========================");
-		System.out.println(photoList);
-		System.out.println("=========================");
-
 		return mav;
 
 	}
 
+	//linking to editPhoto.jsp and pulling all the info for the photo you're editing
 	@RequestMapping("/editPhoto/{photoId}")
 	public ModelAndView editPhotoHandler(@PathVariable int photoId) {
 		ModelAndView mav = new ModelAndView();
 
 		mav.setViewName("editPhoto");
-		
-		//Photo photokey = new Photo();
-		//photokey.setpAlbum(albumServices.getAlbumByAlbumId(Integer.parseInt(request.getParameter("pAlbum"))));
 
 		Photo photo = photoServices.getPhotoByPhotoId(photoId);
-		List<Album> albumList = albumServices.getAllAlbums();
-		
+		List<Album> albumList = albumServices.getAllAlbums();	
 		
 		mav.addObject("photo", photo);
 		mav.addObject("pAlbum", albumList);
-		System.out.println("=========================");
-		System.out.println(albumList);
-		System.out.println("=========================");
+		
 		return mav;
 	}
 
+	//saving the photo on editPhoto.jsp. Uses similar code as savePhotoHandler(). See handler comments for more info. 
 	@Transactional
 	@RequestMapping(value = "/saveEditedPhoto", method = RequestMethod.POST)
 	public ModelAndView saveEditedPhotoHandler(HttpServletRequest request) {
-		System.out.println("=========================");
-		System.out.println(request.getParameter("caption"));
-		System.out.println(request.getParameter("photoId"));
-		System.out.println(request.getParameter("pAlbum"));
-		System.out.println(request.getParameter("pTag"));
-	
-		System.out.println("=========================");
+		
 		
 		ModelAndView mav = new ModelAndView();
 		
@@ -227,22 +214,27 @@ public class TestController {
 		
 		photo.setpAlbum(albumServices.getAlbumByAlbumId(Integer.parseInt(request.getParameter("pAlbum"))));
 		
+		//saving pTags via split(", ") and sending them to a HashMap and a for loop to prevent duplicates.	
 		String pTagsCombined = request.getParameter("pTag");
 		String[] pTagsSeparated = pTagsCombined.split(", ");
 		HashMap<String, Tag> pTagsNoDuplications = new HashMap<>();
 		for (String s : pTagsSeparated) {
 			pTagsNoDuplications.put(s, new Tag(s));
 		}
+		
+		//checking to see if the tags exist in the HashMap. 
+				//If the tag does not exist, save the new tag in the Tag table and add to the photo's tag list (pTags).
+				//If the tag does exist, only save the tag to the photo's tag list (pTags).
 		ArrayList<Tag> pTagsUnchecked = new ArrayList<>(pTagsNoDuplications.values());
 		ArrayList<Tag> pTagsChecked = new ArrayList<>();
 		for (Tag t : pTagsUnchecked) {
 			Tag test = tagServices.findTagByTagName(t.getTagName());
 			if (test == null) {
-				System.out.println("Tag:" + t.getTagId() + " TagName: " + t.getTagName());
+				//System.out.println("Tag:" + t.getTagId() + " TagName: " + t.getTagName());
 				tagServices.saveTag(t);
 				pTagsChecked.add(tagServices.findTagByTagName(t.getTagName()));
 			} else {
-				System.out.println("Test:" + test.getTagId() + " TestName: " + test.getTagName());
+				//System.out.println("Test:" + test.getTagId() + " TestName: " + test.getTagName());
 				pTagsChecked.add(test);
 			}
 
@@ -261,20 +253,12 @@ public class TestController {
 		
 		mav.setViewName("redirect:about");
 		
-//		System.out.println("=========================");
-//		System.out.println(request.getParameter("caption"));
-//		System.out.println(request.getParameter("photoId"));
-//		System.out.println(request.getParameter("pAlbum"));
-//		System.out.println(request.getParameter("pTags"));
-//		System.out.println(photo);
-//		System.out.println(album);
-//		System.out.println(id);
-//		System.out.println("=========================");
 
 		return showAllAlbumsHandler(id);
 
 	}
 	
+	//delete photo on editPhoto.jsp
 	@RequestMapping("deletePhoto/{photoId}")
 	public ModelAndView deletePhotoHandler(@PathVariable int photoId) {
 		
