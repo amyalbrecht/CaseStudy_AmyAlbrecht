@@ -61,7 +61,7 @@ Technology used:
 
 I’m brand new to GitHub, so I had lots of issues trying to figure it out. I’m getting the hang of it now, though.
 
-Figuring out JUnit proved very difficult. I used it once before in a Skills Based Assessment, and then I converted my Case Study to Spring Data JPA. Unfortunately, JUnit doesn’t work with the @Autowired annotation unless you’re using Spring Boot. By the time I realized that, it was Saturday, April 10. I did convert my project to Spring Boot, but it was too late to implement Junit because of the other issues I was debugging. Going forward, I plan to use TDD and Junit before I push projects because I realize how important they are.
+Figuring out JUnit proved very difficult. I used it once before in a Skills Based Assessment, and then I converted my Case Study to Spring Data JPA. Unfortunately, JUnit doesn’t work with the @Autowired annotation unless you’re using Spring Boot. By the time I realized that, it was Saturday, April 10. I did convert my project to Spring Boot, but it was too late to implement JUnit fully because of the other issues I was debugging. Going forward, I plan to use TDD and JUnit before I push projects because I realize how important they are.
 
 I wanted a better user validation for the login, but for now, I have a landing page that only has the login form without the header.jsp that can take you anywhere within the app. Should I decide to create a version 2.0 of this app, that would be the first thing I would work on.
 
@@ -85,6 +85,7 @@ There were several things I wanted to include in this project, but I realized th
 - SQL file to create database without data (createPhotosDB.sql)
 - SQL file to create database with data (createPhotosDBWithData.sql)
 - Wireframes (Wireframes.pdf)
+- PowerPoint deck (AmyAlbrechtCaseStudyPresentation.ppt)
 
 ***
 
